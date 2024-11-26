@@ -1,101 +1,162 @@
-# Advent of Code Template
+# AoC for Rustaceans
 
-A Rust template for the [Advent of Code](https://adventofcode.com/).  
-*Let ~~Rust~~ elves do the hard work for you!*
+A Rust boilerplate template for the [Advent of Code](https://adventofcode.com/)
 
-## Usage
+Ensure Rust is installed. You can find the official setup guide
+[here](https://www.rust-lang.org/learn/get-started)
 
-### Solving
+## Puzzle Input
 
-Write your solution for Part One and Part Two in the `solve_part_1` and
-`solve_part_2` functions, respectively.
+This template assumes two distinct input types provided by the *Advent of Code* puzzles:
 
-The function is expecting you to return `Result<String, anyhow::Error>`.
-This means that you can return either `Ok(String)` or `Err(anyhow::Error)`.
-The easiest way to achieve this is to simply wrap your solution with `Ok`:
+- **Sample input**: Provided in the puzzle description to illustrate the
+problem. Use this in test functions to validate your logic.
+- **Personal puzzle input**: Your unique puzzle input, which is necessary to
+get the actual puzzle answer. Place this input in the `puzzle_input/day_XX.txt`
+file.
+
+> [!TIP]
+> A good approach to solving the puzzle with this template is to first *test*
+> your solution using `cargo test` before attempting to *run* it. Testing uses
+> the **sample input**, which provides a quick way to validate your algorithm’s
+> basic functionality before running it on the larger, potentially more
+> time-consuming, **personal input**.
+
+## Writing Solutions
+
+Implement your solutions in the `solve_part_1` and `solve_part_2` functions.
+
+### Example for Part One
 
 ```rust
-fn answer_to_ultimate_question() -> Result<String, Error> {
-    let result = "42".to_string();
-    Ok(result)
+fn solve_part_1(input: &str) -> Result<String, Error> {
+    // Replace the placeholder solution with your own
+
+    Ok(solution)
 }
 ```
 
-and use a `?` to propagate any potential errors:
+> [!NOTE]
+> The function's return type is `Result<String, anyhow::Error>`. This means
+> your solution must return either `Ok(String)` or `Err(anyhow::Error)`. The
+> easiest way to achieve this is to wrap your result with `Ok()` and use the
+> `?` operator to propagate any potential errors.
 
-```rust
-fn answer_to_ultimate_question() -> Result<i32, Error> {
-    let result = "42".parse::<i32>()?;
-    Ok(result)
-}
-```
+## Running the Solution
 
-Note: The code compiles right from the start. This means you can try to test
-and solve the Part One without worrying about the Part Two.
+### Solve a Specific Day
 
-### Testing
+To solve the puzzle for a specific day, use the `--bin` flag with the day
+number:
 
-With the examples provided by the Advent of Code, you can run a test for your
-solutions if you want to.
-
-Inside the `tests` module, you can find the `check_part_1` and `check_part_2` functions.
-
-Update `EXAMPLE_1` or `EXAMPLE_2` constant and the respective
-`EXPECTED_ANSWER_1` or `EXPECTED_ANSWER_2` to match the example for each part.
-Such as:
-
-```rust
-fn check_part_1() {
-    const EXAMPLE_1: &str = "
-        example input for the part 1
-        note: you can use indented
-        multiline strings just like this,
-        or non-indented ones as well.
-        do as you wish,
-        the elves will handle both!
-    ";
-
-    const EXPECTED_ANSWER_1: &str = "42";
-
-    test_part_one!();
-}
-```
-
-To test your solution, you can run `cargo test`, with the `--bin` flag to
-specify the day you want to test. For example, to test the Day 1:
-
-```no_rust
-cargo test --bin 01
-```
-
-You can also run `cargo test --bins` to test all days at once.
-
-Note: Both are passing by default. You can use them to test only the Part One,
-only the Part Two, or both.
-
-### Getting the Answer
-
-You first need to insert the puzzle input inside the `day_XX.txt` file. You can
-find it inside the `puzzle_input` folder.
-
-Then, use `cargo run` with the `--bin` flag to specify the day you want to run.
-For example, to run the day 01:
-
-```no_rust
+```bash
 cargo run --bin 01
 ```
 
-Your answer will be printed in the terminal. Like this:
-
-```no_rust
-
-Day01
------
-Part One: 
-Part Two: 
+By default, the output looks like this:
 
 ```
+Day 01
+------
+```
+
+> [!NOTE]
+> This template uses a custom structure where each day’s solution is treated as
+> a separate binary. These binaries are placed in the src/bin/ directory,
+> deviating from the default main.rs. This allows us to isolate each day’s
+> logic and execute it independently using the --bin flag.
+
+### Run Individual Parts
+
+You can run individual parts using feature flags:
+
+```bash
+cargo run --bin 01 --features part_1
+```
+
+```bash
+cargo run --bin 01 --features part_2
+```
+
+### Run Both Parts Together
+
+There are two ways to run both parts:
+
+1. Using the `--all-features` flag:
+
+   ```bash
+   cargo run --bin 01 --all-features
+   ```
+
+2. Using a space-separated or comma-separated list of features:
+
+   ```bash
+   cargo run --bin 01 --features "part_1 part_2"
+   ```
+
+   ```bash
+   cargo run --bin 01 --features part_1,part_2
+   ```
+
+The default output when running both parts looks like this:
+
+```
+Day 01
+------
+Part One: <your puzzle answer>
+Part Two: <your puzzle answer>
+```
+
+> [!NOTE]
+> Feature flags in Rust enable conditional compilation of code. In this
+> template, they are used to execute solutions for specific parts of the puzzle
+> (`part_1` or `part_2`).
+
+## Testing Your Code
+
+Tests are included for both parts. Update the constants with the sample input
+and its corresponding answer.
+
+### Example for Part One Test
+
+```rust
+#[test]
+fn sample_part_1() {
+    const SAMPLE_INPUT_1: &str = "\
+sample part 1 input
+goes here
+like this
+";
+    const SAMPLE_ANSWER_1: &str = "sample part 1 answer";
+
+    assert_eq!(solve_part_1(SAMPLE_INPUT_1).unwrap(), SAMPLE_ANSWER_1);
+}
+```
+
+### Run the Tests
+
+You can run the tests for your solution using the `cargo test` command. Use the
+`--bin` flag to specify the day and `--features` to include a specific part, or
+`--all-features` to test both:
+
+- To test Part One:
+
+  ```bash
+  cargo test --bin 01 --features part_1
+  ```
+
+- To test Part Two:
+
+  ```bash
+  cargo test --bin 01 --features part_2
+  ```
+
+- To test both parts:
+
+  ```bash
+  cargo test --bin 01 --all-features
+  ```
 
 ---
 
-🎄 Happy coding! 🎄
+🎄 *Happy coding!* 🎄
