@@ -1,0 +1,10 @@
+[alias]
+# Run solutions against puzzle input
+r = "run --bin"
+r1 = "run --no-default-features --features part_1 --bin"
+r2 = "run --no-default-features --features part_2 --bin"
+
+# Run solutions against example input
+t = "test --bin"
+t1 = "test --no-default-features --features part_1 --bin"
+t2 = "test --no-default-features --features part_2 --bin"

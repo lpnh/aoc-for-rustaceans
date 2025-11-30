@@ -1,1 +1,1 @@
-<your puzzle input>
+Day 4 puzzle input

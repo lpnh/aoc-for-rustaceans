@@ -1,63 +1,63 @@
-use anyhow::{Error, Result};
+use anyhow::{Context, Result};
 
 const PUZZLE_INPUT: &str = include_str!("../../puzzle_input/day_10.txt");
 
 #[cfg(feature = "part_1")]
-fn solve_part_1(input: &str) -> Result<String, Error> {
-    let solution = input.lines().next().unwrap().replace("input", "answer");
+fn solution_part_1(input: &str) -> Result<String> {
+    let result = input
+        .lines()
+        .next()
+        .context("missing first line")?
+        .replace("input", "output");
 
-    Ok(solution)
+    Ok(result)
 }
 
 #[cfg(feature = "part_2")]
-fn solve_part_2(input: &str) -> Result<String, Error> {
-    let solution = input.lines().next().unwrap().replace("input", "answer");
+fn solution_part_2(input: &str) -> Result<String> {
+    let result = input
+        .lines()
+        .next()
+        .context("missing first line")?
+        .replace("input", "output");
 
-    Ok(solution)
+    Ok(result)
 }
 
-fn main() -> Result<(), Error> {
-    println!("\nDay 10\n------");
-
+fn main() -> Result<()> {
     #[cfg(feature = "part_1")]
-    {
-        let answer_part_1 = solve_part_1(PUZZLE_INPUT)?;
-        println!("Part One: {answer_part_1}");
-    }
+    println!("Part One: {}", solution_part_1(PUZZLE_INPUT)?);
 
     #[cfg(feature = "part_2")]
-    {
-        let answer_part_2 = solve_part_2(PUZZLE_INPUT)?;
-        println!("Part Two: {answer_part_2}");
-    }
-
-    println!();
+    println!("Part Two: {}", solution_part_2(PUZZLE_INPUT)?);
 
     Ok(())
 }
 
 #[cfg(feature = "part_1")]
 #[test]
-fn sample_part_1() {
-    const SAMPLE_INPUT_1: &str = "\
-sample part 1 input
-goes here
-like this
+fn test_part_1() -> Result<()> {
+    const EXAMPLE_INPUT_1: &str = "\
+Part One example input
 ";
-    const SAMPLE_ANSWER_1: &str = "sample part 1 answer";
 
-    assert_eq!(solve_part_1(SAMPLE_INPUT_1).unwrap(), SAMPLE_ANSWER_1);
+    const EXAMPLE_OUTPUT_1: &str = "Part One example output";
+
+    assert_eq!(solution_part_1(EXAMPLE_INPUT_1)?, EXAMPLE_OUTPUT_1);
+
+    Ok(())
 }
 
 #[cfg(feature = "part_2")]
 #[test]
-fn sample_part_2() {
-    const SAMPLE_INPUT_2: &str = "\
-sample part 2 input
-goes here
-like this
+fn test_part_2() -> Result<()> {
+    const EXAMPLE_INPUT_2: &str = "\
+Part Two example input
 ";
-    const SAMPLE_ANSWER_2: &str = "sample part 2 answer";
 
-    assert_eq!(solve_part_2(SAMPLE_INPUT_2).unwrap(), SAMPLE_ANSWER_2);
+    const EXAMPLE_OUTPUT_2: &str = "Part Two example output";
+
+    assert_eq!(solution_part_2(EXAMPLE_INPUT_2)?, EXAMPLE_OUTPUT_2);
+
+    Ok(())
 }

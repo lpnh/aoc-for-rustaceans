@@ -1,1 +1,1 @@
-<your puzzle input>
+Day 8 puzzle input

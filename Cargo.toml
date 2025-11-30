@@ -2,11 +2,12 @@
 name = "aoc_for_rustaceans"
 version = "0.1.0"
 authors = ["lpnh <paniguel.lpnh@gmail.com>"]
-edition = "2021"
+edition = "2024"
 license = "Unlicense"
 publish = false
 
 [features]
+default = ["part_1", "part_2"]
 part_1 = []
 part_2 = []
 

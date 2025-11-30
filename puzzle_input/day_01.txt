@@ -1,1 +1,1 @@
-<your puzzle input>
+Day 1 puzzle input
