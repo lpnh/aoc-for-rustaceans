@@ -11,34 +11,34 @@ In this template, each **day** of the Advent of Code has its own dedicated
 file:
 
 ```txt
- .
-├──  puzzle_input
-│   ├──  day_01.txt
-│   ├──  day_02.txt
-│   ├──  day_03.txt
-│   ├──  day_04.txt
-│   ├──  day_05.txt
-│   ├──  day_06.txt
-│   ├──  day_07.txt
-│   ├──  day_08.txt
-│   ├──  day_09.txt
-│   ├──  day_10.txt
-│   ├──  day_11.txt
-│   └──  day_12.txt
-└── 󰣞 src
-    └──  bin
-        ├──  01.rs
-        ├──  02.rs
-        ├──  03.rs
-        ├──  04.rs
-        ├──  05.rs
-        ├──  06.rs
-        ├──  07.rs
-        ├──  08.rs
-        ├──  09.rs
-        ├──  10.rs
-        ├──  11.rs
-        └──  12.rs
+.
+├── puzzle_input
+│   ├── day_01.txt
+│   ├── day_02.txt
+│   ├── day_03.txt
+│   ├── day_04.txt
+│   ├── day_05.txt
+│   ├── day_06.txt
+│   ├── day_07.txt
+│   ├── day_08.txt
+│   ├── day_09.txt
+│   ├── day_10.txt
+│   ├── day_11.txt
+│   └── day_12.txt
+└── src
+    └── bin
+        ├── 01.rs
+        ├── 02.rs
+        ├── 03.rs
+        ├── 04.rs
+        ├── 05.rs
+        ├── 06.rs
+        ├── 07.rs
+        ├── 08.rs
+        ├── 09.rs
+        ├── 10.rs
+        ├── 11.rs
+        └── 12.rs
 ```
 
 As you can notice, each day is treated as an isolated binary.
